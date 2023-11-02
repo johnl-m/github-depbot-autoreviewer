@@ -1,5 +1,4 @@
 #!/bin/bash
-getopts 
 if [[ ! -n $1 ]];
 then 
     echo "No snyk user passed. Usage: ./github_snyk_autoreviewer.sh your_org_snyk_account_name"
