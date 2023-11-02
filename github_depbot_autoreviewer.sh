@@ -1,18 +1,18 @@
 #!/bin/bash
 if [[ ! -n $1 ]];
 then 
-    echo "No snyk user passed. Usage: ./github_snyk_autoreviewer.sh your_org_snyk_account_name"
+    echo "No dependency bot user passed. Usage: ./github_depbot_autoreviewer.sh your_org_dependency_bot_github_username"
     exit 1
 fi
-echo "Received snyk user $1"
-SNYK_USER="$1"
+echo "Received dependency bot user $1"
+DEPBOT_USERNAME="$1"
 if ! command -v gh &> /dev/null
 then
     echo "gh command not found. Make sure you've installed the GitHub CLI!"
     exit 1
 fi
 GH_USER=$(gh api user | jq -r '.login')
-PRS=$(gh search prs --assignee $GH_USER --author $SNYK_USER --state open --json repository,number)
+PRS=$(gh search prs --assignee $GH_USER --author $DEPBOT_USERNAME --state open --json repository,number)
 jq -c '.[]' <<< "$PRS" | while read i; do
 REPO_NAME=$(jq -r <<< $i '.repository.nameWithOwner')
 PR_NUMBER=$(jq -r <<< $i '.number')
