@@ -1,5 +1,5 @@
 # github-depbot-autoreviewer
-Tired of manually reviewing automated vulnerability fixes? Here's a script to approve and auto-merge all dependency upgrade pull requests (eg submitted by Snyk, Dependabot, Renovate etc) assigned to the current user. 
+Tired of manually reviewing automated vulnerability fixes? Here's a script which uses the GitHub CLI to approve and auto-merge all dependency upgrade pull requests (eg submitted by Snyk, Dependabot, Renovate etc) assigned to the current user. 
 
 ### Usage
 1. Download the script
